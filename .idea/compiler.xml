@@ -8,7 +8,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="pay-service" />
-        <module name="gateway-service" />
         <module name="gateway" />
         <module name="auth-server" />
         <module name="registery" />

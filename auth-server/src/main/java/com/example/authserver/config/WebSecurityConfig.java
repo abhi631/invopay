@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @AllArgsConstructor
@@ -20,33 +21,18 @@ public class WebSecurityConfig {
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//    corsCustomizer.corsCustomizer(http);
-//    return http.formLogin()
-//            .and()
-//          .authorizeRequests()
-//            .anyRequest().authenticated()
-//          .and().build();
     http
-            .csrf().disable()
-            .cors().disable()
-//                .authorizeRequests()
-//                .antMatchers("/login/**").permitAll()
-//                .and()
+            .cors().and().csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/oauth2/**").permitAll()
+                .and()
             .authorizeRequests()
             .anyRequest().authenticated()
             .and()
-            .formLogin(Customizer.withDefaults());
+//            .formLogin(Customizer.withDefaults());
+            .formLogin(form-> form.loginPage("/login").permitAll());
     return http.build();
   }
-
-//  @Bean
-//  public UserDetailsService userDetailsService() {
-//    User u1 = (User) User.withUsername("bill").password("12345").authorities("read").build();
-//
-//    InMemoryUserDetailsManager uds = new InMemoryUserDetailsManager();
-//    uds.createUser(u1);
-//    return uds;
-//  }
 
   @Bean
   public PasswordEncoder passwordEncoder() {

@@ -1,0 +1,158 @@
+<html xmlns:th="http://www.thimeleaf.org">
+<head>
+<!--    <link rel="stylesheet" href=""  th:href="@{/login.css}" />-->
+    <style>
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+h1{
+    color: pink;
+    font-style: italic;
+}
+.box{
+    width:350px;
+    background-color:  #fff;
+    box-sizing:border-box ;
+}
+@media (max-width: 778px){
+    .box{
+        width: 90%;
+    }
+}
+
+/  /
+.loginbtn{
+    text-align: center;
+    padding-top: 25px;
+}
+.btn{
+margin:25px;
+    border: none;
+    background: linear-gradient(90deg,#055fb5,#aa1212);
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #8080804a;
+    margin-bottom: 15px;
+    width: 85%;
+    outline: none;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.822);
+
+}
+/* .btn:hover{
+    background: linear-gradient(90deg,white,white);
+    color: black;
+    cursor: pointer;
+} */
+.forgetdiv{
+    text-align: center;
+    margin: 1rem;
+}
+.icon img{
+    width: 12px;
+    height: 12px;
+    margin-right: 7px;
+}
+.forgetlink{
+    text-decoration: none;
+    color: #6c757d;
+    size: 5%;
+}
+.icon{
+    font-family: "Poppins", sans-serif;
+}
+.inputbtn {
+    border: none;
+    background-color: #EFEFEF;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #8080804a;
+    margin-bottom: 15px;
+    width: 85%;
+    outline: none;
+    border-radius: 5px;
+    border-bottom: none;
+}
+
+.inputbtn:focus {
+    transition: all 0.1s ease;
+    border-bottom: 2px solid #233D8B;
+}
+.inputdiv{
+    text-align: center;
+}
+.img{
+    margin: 16px 0;
+    padding: 0 65px ;
+    height: 25%;
+    width: 50%;
+}
+.logobar{
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+    margin-bottom: 65px;
+    text-align: center;
+}
+
+.checkbox{
+    display: inline;
+    padding-left: 5%;
+    padding-top: 15px;
+    height: 18px;
+    width: 18px;
+}
+.remember{
+    padding-left: 1.5%;
+    color: #2e4765c0;
+}
+.checkbtn{
+    cursor: pointer;
+}
+.center{
+    display: flex;
+    padding-left: 5%;
+}
+.center input::placeholder{
+    font-family: "Poppins", sans-serif;
+}
+.center input[type="checkbox"]{
+    border-radius: 50%;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="box">
+    <form th:action="@{/login}" method="post">
+        <div class="logobar">
+<!--            <img class="img" th:src="@{/static/image/logo.png}"  />--><h1>INVOPAY</h1>
+        </div>
+        <div class="inputdiv">
+            <input class="inputbtn" type="text" id="username" name="username" placeholder="Username"/>
+        </div>
+
+        <div class="inputdiv">
+            <input class="inputbtn" type="text" id="password" name="password" placeholder="Password"/>
+        </div>
+        <div class="checkbox">
+            <div class="center">
+                <input type="checkbox" class="checkbtn" id="id">
+                <label class="remember" for="id">Remember me</label>
+            </div>
+        </div>
+        <div class="loginbtn" >
+            <input class="btn" type="submit" value="SIGN IN">
+        </div>
+        <div class="forgetdiv">
+            <a href ="" class="forgetlink"><span class="icon" ><img /></span> forget pwd?</a>
+        </div>
+
+<!--        <button class="btn" type="" >Login</button>-->
+    </form>
+    </div>
+</div>
+</body>
+</html>
