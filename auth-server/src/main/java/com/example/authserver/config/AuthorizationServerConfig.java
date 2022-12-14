@@ -33,13 +33,13 @@ public class AuthorizationServerConfig {
     // http://localhost:8080/oauth2/authorize?response_type=code&client_id=client&scope=openid&redirect_uri=http://127.0.0.1:8000/authorized
   // http://localhost:8080/oauth2/token?client_id=client&redirect_uri=http://127.0.0.1:8000/authorized&grant_type=authorization_code&code=
 
-//  private final CORSCustomizer corsCustomizer;
+  private final CORSCustomizer corsCustomizer;
 
   @Bean
   @Order(Ordered.HIGHEST_PRECEDENCE)
   public SecurityFilterChain securityASFilterChain(HttpSecurity http) throws Exception {
     OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
-//    corsCustomizer.corsCustomizer(http);
+    corsCustomizer.corsCustomizer(http);
     http.cors();
     return http.formLogin().and().build();
   }
@@ -58,7 +58,8 @@ public class AuthorizationServerConfig {
         .clientSettings(ClientSettings.builder()
             .requireAuthorizationConsent(true).build())
         .tokenSettings(TokenSettings.builder()
-            .refreshTokenTimeToLive(Duration.ofHours(12))
+                .accessTokenTimeToLive(Duration.ofDays(365))
+//            .refreshTokenTimeToLive(Duration.ofHours(12))
             .build())
         .build();
 
