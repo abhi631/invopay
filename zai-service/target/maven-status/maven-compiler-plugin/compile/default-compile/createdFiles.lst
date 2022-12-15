@@ -1,0 +1,7 @@
+org\zai\dto\ZAITokenResponce.class
+org\zai\config\redis\RedisConfig.class
+org\zai\dto\ZAIHeader.class
+org\zai\config\ZAIConfiguration.class
+org\zai\service\ZAIIntigrationService.class
+org\zai\controller\ZAIController.class
+org\zai\ZaiService.class
