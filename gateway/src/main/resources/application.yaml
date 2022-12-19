@@ -5,3 +5,5 @@ spring:
         jwt:
           jwk-set-uri: http://localhost:8080/oauth2/jwks
           issuer-uri: http://localhost:8080
+swagger:
+  version: 2.0

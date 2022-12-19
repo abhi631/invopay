@@ -10,6 +10,7 @@
         <module>registery</module>
         <module>zai-service</module>
         <module>invopay-web-service</module>
+        <module>common-service</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -27,6 +28,7 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <common-version>0.0.1-RELEASE</common-version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
     </properties>
     <dependencies>
@@ -39,6 +41,12 @@
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

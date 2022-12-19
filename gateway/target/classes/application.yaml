@@ -5,31 +5,5 @@ spring:
         jwt:
           jwk-set-uri: http://localhost:8080/oauth2/jwks
           issuer-uri: http://localhost:8080
-#spring:
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          articles-client-oidc:
-#            provider: spring
-#            client-id: client
-#            client-secret: secret
-#            authorization-grant-type: authorization_code
-#            redirect-uri: "http://127.0.0.1:8080/login"
-#            scope: openid
-##            client-name: articles-client-oidc
-#          articles-client-authorization-code:
-#            provider: spring
-#            client-id: client
-#            client-secret: secret
-#            authorization-grant-type: authorization_code
-#            redirect-uri: "http://127.0.0.1:3000/authorized"
-#            scope: articles.read
-##            client-name: articles-client-authorization-code
-#        provider:
-#          spring:
-#            issuer-uri: http://localhost:8080
-#      resourceserver:
-#        jwt:
-#          jwk-set-uri: http://localhost:8080/oauth2/jwks
-#          issuer-uri: http://localhost:8080
+swagger:
+  version: 2.0

@@ -1,5 +1,6 @@
 package org.zai.service;
 
+import com.google.common.net.HttpHeaders;
 import com.google.common.net.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,8 +9,11 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.zai.dto.ClientDTO;
 import org.zai.dto.ZAIHeader;
 import org.zai.dto.ZAITokenResponce;
+import org.zai.dto.zai.ZAIClientDTO;
+import org.zai.models.Client;
 import reactor.core.publisher.Mono;
 
 import java.awt.*;
@@ -27,6 +31,7 @@ public class ZAIIntigrationService {
     @Value("${client_id}") private String client_id;
     @Value("${client_secret}") private String client_secret;
     @Value("${scope}") private String scope;
+    @Value ("${createClient}") private String createUserUrl;
 
     public ZAITokenResponce generateToken(){
         ZAITokenResponce zaiTokenResponce = webClient.post().uri(tokenUri)
@@ -36,5 +41,16 @@ public class ZAIIntigrationService {
         redisTemplate.opsForHash().put("zaiTokenResponce", "token" ,zaiTokenResponce );
         redisTemplate.expire("token",3600, TimeUnit.SECONDS);
         return  zaiTokenResponce;
+    }
+
+    public void createClientAtZai(ZAIClientDTO client) {
+        String zaiToken = generateToken().getAccess_token();
+        Object o =webClient.post().uri(createUserUrl).body(Mono.just(client), ZAIClientDTO.class)
+//                .headers(h-> h.setBearerAuth(zaiToken))
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + zaiToken)
+                .header(HttpHeaders.CONTENT_TYPE, "application/json")
+                .retrieve().bodyToMono(Object.class)
+                .block();
+        System.out.println(o);
     }
 }

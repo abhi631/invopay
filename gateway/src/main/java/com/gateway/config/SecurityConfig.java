@@ -2,22 +2,40 @@ package com.gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.server.SecurityWebFilterChain;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 
-import java.util.List;
 
 
 @Configuration
-public class SecurityConfig {//extends WebSecurityConfigurerAdapter {
+public class SecurityConfig {
+    public static final String[] PUBLIC_URLS = {
+            "/v3/api-docs",
+            "/v2/api-docs",
+            "/swagger-resources/**",
+            "/swagger-ui/**",
+            "/webjars/**",
+            "/actuator",
+            "/zai/**",
+            "/web/**"
+
+
+    };
+
+    @Bean
+    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity){
+        serverHttpSecurity
+                .authorizeExchange()
+                .pathMatchers(PUBLIC_URLS)
+                .permitAll()
+                .and()
+                .authorizeExchange()
+                .anyExchange()
+                .authenticated()
+                .and()
+                .oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt);
+        return  serverHttpSecurity.build();
+    }
 
 //    @Bean
 //    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -41,21 +59,6 @@ public class SecurityConfig {//extends WebSecurityConfigurerAdapter {
 ////        return http.build();
 //    }
 
-    @Bean
-    public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity serverHttpSecurity){
-        serverHttpSecurity
-//                .authorizeExchange()
-//                .pathMatchers("/oauth2/add_new_user")
-//                .permitAll()
-//                .and()
-                .authorizeExchange()
-                .anyExchange()
-                .authenticated()
-                .and()
-//                .oauth2Login();
 
-                .oauth2ResourceServer(ServerHttpSecurity.OAuth2ResourceServerSpec::jwt);
-        return  serverHttpSecurity.build();
-    }
 
 }

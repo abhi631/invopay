@@ -19,12 +19,20 @@ public class WebSecurityConfig {
 
   private final CORSCustomizer corsCustomizer;
 
+  public static final String[] PUBLIC_URLS = {
+          "/v3/api-docs",
+          "/v2/api-docs",
+          "/swagger-resources/**",
+          "/swagger-ui/**",
+          "/webjars/**"
+  };
+
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
 //            .cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/oauth2/**").permitAll()
+                .antMatchers(PUBLIC_URLS).permitAll()
                 .and()
             .authorizeRequests()
             .anyRequest().authenticated()

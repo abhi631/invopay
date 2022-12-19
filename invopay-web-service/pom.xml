@@ -37,11 +37,6 @@
         <artifactId>spring-boot-starter-test</artifactId>
         <scope>test</scope>
     </dependency>
-    <!--    <dependency>-->
-    <!--        <groupId>org.common</groupId>-->
-    <!--        <artifactId>common-service</artifactId>-->
-    <!--        <version>${common-version}</version>-->
-    <!--    </dependency>-->
     <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -52,14 +47,16 @@
         <artifactId>mysql-connector-java</artifactId>
         <scope>runtime</scope>
     </dependency>
-<!--    <dependency>-->
-<!--        <groupId>org.springframework.boot</groupId>-->
-<!--        <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--        <groupId>redis.clients</groupId>-->
-<!--        <artifactId>jedis</artifactId>-->
-<!--        <version>3.9.0</version>-->
-<!--    </dependency>-->
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-boot-starter</artifactId>
+        <version>3.0.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>io.springfox</groupId>
+        <artifactId>springfox-swagger-ui</artifactId>
+        <version>3.0.0</version>
+    </dependency>
 </dependencies>
 </project>

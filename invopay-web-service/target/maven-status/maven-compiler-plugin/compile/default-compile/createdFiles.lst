@@ -1,0 +1,4 @@
+org\invopayWebService\config\swagger\SwaggerConfig.class
+org\invopayWebService\controller\Controller.class
+org\invopayWebService\config\security\SecurityConfig.class
+org\invopayWebService\InvoPayWebService.class
