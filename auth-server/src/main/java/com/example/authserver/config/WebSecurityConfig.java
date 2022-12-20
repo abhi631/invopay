@@ -30,14 +30,13 @@ public class WebSecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
-//            .cors().and().csrf().disable()
-                .authorizeRequests()
-                .antMatchers(PUBLIC_URLS).permitAll()
-                .and()
             .authorizeRequests()
-            .anyRequest().authenticated()
+            .antMatchers(PUBLIC_URLS).permitAll()
             .and()
-//            .formLogin(Customizer.withDefaults());
+            .authorizeRequests()
+            .anyRequest()
+            .authenticated()
+            .and()
             .formLogin(form-> form.loginPage("/login").permitAll());
     return http.build();
   }

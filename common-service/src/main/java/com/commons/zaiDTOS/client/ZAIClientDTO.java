@@ -1,4 +1,4 @@
-package org.zai.dto.zai;
+package com.commons.zaiDTOS.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

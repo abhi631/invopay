@@ -33,8 +33,8 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
     @Override
     public List get() {
         List resources = new ArrayList();
-        resources.add(swaggerResource("zai-service", "/zai/v2/api-docs", "2.0"));
-        resources.add(swaggerResource("invopay-web-service", "/web/v2/api-docs", "2.0"));
+        resources.add(swaggerResource("zai-service", "/v2/api-docs", "2.0"));
+        resources.add(swaggerResource("invopay-web-service", "/v2/api-docs", "2.0"));
         resources.add(swaggerResource("gateway-service", "/actuator", "2.0"));
         return resources;
     }
@@ -50,27 +50,27 @@ public class SwaggerConfig implements SwaggerResourcesProvider {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .securitySchemes(Arrays.asList(apiKeys()))
-                .securityContexts(securityContexts())
+//                .securitySchemes(Arrays.asList(apiKeys()))
+//                .securityContexts(securityContexts())
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
     }
 
-    private List<SecurityContext> securityContexts(){
-        return Arrays.asList(SecurityContext.builder().securityReferences(securityReferences()).build());
-    }
-
-    private List<SecurityReference> securityReferences(){
-        AuthorizationScope socpes = new AuthorizationScope("global" , "accessEverything");
-        return  Arrays.asList(new SecurityReference("JWT" ,new AuthorizationScope[] { socpes } ));
-    }
-
-
-    private ApiKey apiKeys(){
-        return new ApiKey("JWT" , AUTHORIZATION_HEADER , "header");
-    }
+//    private List<SecurityContext> securityContexts(){
+//        return Arrays.asList(SecurityContext.builder().securityReferences(securityReferences()).build());
+//    }
+//
+//    private List<SecurityReference> securityReferences(){
+//        AuthorizationScope socpes = new AuthorizationScope("global" , "accessEverything");
+//        return  Arrays.asList(new SecurityReference("JWT" ,new AuthorizationScope[] { socpes } ));
+//    }
+//
+//
+//    private ApiKey apiKeys(){
+//        return new ApiKey("JWT" , AUTHORIZATION_HEADER , "header");
+//    }
 
 
 

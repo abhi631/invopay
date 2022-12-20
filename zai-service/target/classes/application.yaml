@@ -28,12 +28,12 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
 
-#  security:
-#    oauth2:
-#      resourceserver:
-#        jwt:
-#          jwk-set-uri: http://localhost:8080/oauth2/jwks
-#          issuer-uri: http://localhost:8080
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/oauth2/jwks
+          issuer-uri: http://localhost:8080
 
 #--------------ZAI Configuration ---------#
 tokenUri: https://au-0000.sandbox.auth.assemblypay.com/tokens

@@ -3,8 +3,8 @@ package org.zai.service;
 import com.commons.ObjectMapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.zai.dto.ClientDTO;
-import org.zai.dto.zai.ZAIClientDTO;
+import com.commons.zaiDTOS.client.ClientDTO;
+import com.commons.zaiDTOS.client.ZAIClientDTO;
 import org.zai.models.Client;
 import org.zai.repository.ZaiClientRepo;
 

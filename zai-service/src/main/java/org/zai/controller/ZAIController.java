@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.zai.dto.ClientDTO;
+import com.commons.zaiDTOS.client.ClientDTO;
 import org.zai.service.ZAIIntigrationService;
 import org.zai.service.ZAIService;
 
@@ -17,7 +17,7 @@ public class ZAIController {
     @Autowired private ZAIIntigrationService zaiIntigrationService;
     @Autowired private ZAIService zaiService;
 
-    @PostMapping("/zai/create_client")
+    @PostMapping("/create_client")
     public ResponseEntity<Object> createClient(@RequestBody ClientDTO clientdto){
         return ResponceHandler.generateResponce(HttpStatus.OK , true , zaiService.createClient(clientdto));
     }

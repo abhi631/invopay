@@ -1,23 +1,16 @@
 package org.zai.service;
 
 import com.google.common.net.HttpHeaders;
-import com.google.common.net.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.zai.dto.ClientDTO;
 import org.zai.dto.ZAIHeader;
 import org.zai.dto.ZAITokenResponce;
-import org.zai.dto.zai.ZAIClientDTO;
-import org.zai.models.Client;
+import com.commons.zaiDTOS.client.ZAIClientDTO;
 import reactor.core.publisher.Mono;
 
-import java.awt.*;
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 @Service

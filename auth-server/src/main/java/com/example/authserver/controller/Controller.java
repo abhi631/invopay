@@ -31,9 +31,9 @@ public class Controller {
 //        return true;
 //    }
 
-    @GetMapping("/login")
-    public String getLogin(){
-        return "login";
-    }
+//    @GetMapping("/log")
+//    public String getLogin(){
+//        return "login";
+//    }
 
 }
